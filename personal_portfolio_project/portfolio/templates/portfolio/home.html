@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+</head>
+<body>
+    <h1>This is my portfolio!</h1>
+
+    {% for project in projects %}
+    {{ project.title }}
+    <br>
+    {{ project.desc }}
+    <br>
+    <img src="{{ project.img.url }}" alt="" height="100">
+    <br>
+    {% if project.url %}
+    <a href="{{ project.url }}">Link</a>
+    {% endif %}
+    <br>
+    {% endfor %}
+</body>
+</html>
