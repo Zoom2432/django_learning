@@ -6,6 +6,17 @@
     <title>Blog</title>
 </head>
 <body>
-    <h1>Hello Blog</h1>
+    <h1>Blog</h1>
+    <h2>Valera was written {{ blogs.count }} state{{ blogs.count|pluralize }}</h2>
+
+    {% for blog in blogs %}
+    <a href="{% url 'blog:detail' blog.id %}">{{ blog.title }}</a>
+    <br>
+    {{ blog.date|date:'M d Y' }}
+    <br>
+    {{ blog.text|truncatechars:10 }}
+    <br>
+    {% endfor %}
+
 </body>
 </html>

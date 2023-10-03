@@ -8,6 +8,13 @@
 <body>
     <h1>This is my portfolio!</h1>
 
+    <a href="{% url 'blog:blog' %}">Blog</a><br>
+
+    {% load static %}
+
+    <img src="{% static 'portfolio/photo.jpg' %}" width="200"><br>
+    <a href="{% static 'portfolio/cert-253460.pdf' %}">Certificate</a><br>
+
     {% for project in projects %}
     {{ project.title }}
     <br>
