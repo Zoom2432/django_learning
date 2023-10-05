@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+
+    Logged In as <b>{{ user.username }}</b><br>
+
+    <a href="{% url 'dict' %}">Dictionary</a>
+    <a href="{% url 'addword' %}">Add a new word</a>
+
+    <form action="{% url 'logoutuser' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
+    {% else %}
+
+    <a href="{% url 'loginuser' %}">Log In</a>
+    <a href="{% url 'signupuser' %}">Sign Up</a>
+
+
+    {% endif %}
+
+    {% block content %}{% endblock %}
+</body>
+</html>

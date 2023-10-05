@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word</title>
+</head>
+<body>
+    {% extends 'dictionary_app/base.html' %}
+
+    {% block content %}
+        <br>
+        {{ error }}
+        {{ word.word }}
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+
+        <form method='POST' action="{% url 'deleteword' word.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+
+    {% endblock %}
+    
+</body>
+</html>
